@@ -37,7 +37,7 @@ Ingestion complete! You can now run privateGPT.py to query your documents
 python main.py
 ```
 
-#### Step 6: Register an acount and start chatting
+#### Step 6: Register an acount and go to http://127.0.0.1:8000/ to start chatting
 
 ## Add more files
 
