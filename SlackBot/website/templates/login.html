@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login Page</h1>
+    <form id="login-form">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password">
+        <br>
+        <div id="login-failed-message" style="color: red; display: none;">Login failed, Incorrect Username or Password</div> <!-- Hidden initially -->
+        <br>
+        <input type="submit" value="Login">
+    </form>
+    <a href="{{url_for('views.register')}}">Don't have an acount? Sign up</a><br>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get username and password from form
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Send username and password to Flask server
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({username: username, password: password}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Server response:', data);
+                // Clear textboxes
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+                if (data.username !== false) {
+                    window.location.href = '/chat';
+                } else {
+                    // Handle case where username is False (e.g., display an error message)
+                    document.getElementById('login-failed-message').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle errors if needed
+            });
+        });
+    </script>
+</body>
+</html>
