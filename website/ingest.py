@@ -23,7 +23,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.docstore.document import Document
-from SlackBot.constants import CHROMA_SETTINGS
+from constants import CHROMA_SETTINGS
 
 
 # Load environment variables
@@ -168,5 +168,17 @@ def main(user_permission = "base_user"):
     print(f"Ingestion complete! You can now run privateGPT.py to query your documents")
 
 
+def get_folders_in_folder(folder_path):
+    folders = []
+    # List all files and directories in the given folder
+    contents = os.listdir(folder_path)
+    for item in contents:
+        item_path = os.path.join(folder_path, item)
+        # Check if the item is a directory
+        if os.path.isdir(item_path):
+            folders.append(item)
+    return folders
+
 if __name__ == "__main__":
-    main()
+    for folder in get_folders_in_folder('source_documents'):
+        main(folder)
