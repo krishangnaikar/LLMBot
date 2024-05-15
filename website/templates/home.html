@@ -1,16 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .button {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
     <h1>Talk with your docs</h1>
-    <a href="{{url_for('views.login')}}">Login Page</a><br>
-    <a href="{{url_for('views.register')}}">Register Page</a><br>
-    <a href="{{url_for('views.chat')}}">Chat with a bot</a>
+    <div class="button-container">
+        <a href="{{ url_for('views.login') }}" class="button">Login Page</a>
+        <a href="{{ url_for('views.register') }}" class="button">Register Page</a>
+        <a href="{{ url_for('views.chat') }}" class="button">Chat with a bot</a>
+    </div>
 </body>
 </html>

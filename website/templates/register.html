@@ -1,23 +1,96 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .logo {
+            width: 75px; /* Adjust as needed */
+            height: 75px; /* Adjust as needed */
+            margin-right: 20px;
+            margin-left: 30px;
+            cursor: pointer;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px; /* Adjust as needed */
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Register Page</h1>
+    <div class="header">
+        <img class="logo" src="{{url_for('static', filename='logo.png')}}" alt="Logo" onclick="goToHomePage()">
+    </div>
+    <h1>Register</h1>
     <form id="register-form">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br><br>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
         <input type="submit" value="Register">
     </form>
-    <a href="{{url_for('views.login')}}">Already have an acount? Log in</a><br>
+    <br>
+    <a href="{{ url_for('views.login') }}">Already have an account? Log in</a>
+
     <script>
+        function goToHomePage() {
+            window.location.href = '/';
+        }
+
         document.getElementById('register-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent default form submission
 
@@ -40,6 +113,8 @@
                 document.getElementById('username').value = '';
                 document.getElementById('password').value = '';
 
+                // Redirect to chat page or handle response accordingly
+                // For demonstration purpose, redirecting to the chat page
                 window.location.href = '/chat';
             })
             .catch(error => {

@@ -10,8 +10,20 @@
         margin: 0;
         padding: 0;
     }
+    .header {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: flex-start;
+    }
+    .logo {
+        width: 75px; /* Adjust as needed */
+        height: 75px; /* Adjust as needed */
+        margin-right: 20px;
+        cursor: pointer;
+    }
     #feed-container {
-        height: calc(100vh - 50px);
+        height: calc(100vh - 200px);
         overflow-y: auto;
         padding: 10px;
     }
@@ -52,16 +64,22 @@
 </style>
 </head>
 <body>
+    <div class="header">
+        <img class="logo" src="{{url_for('static', filename='logo.png')}}" alt="Logo" onclick="goToHomePage()">
+    </div>
     <div id="feed-container"></div>
     <div id="query-container">
         <input type="text" id="query-input" placeholder="Enter your query...">
         <button id="query-submit">Submit</button>
     </div>
-    <br>
-    <br>
 
 
     <script>
+
+        function goToHomePage() {
+            window.location.href = '/';
+        }
+
         const username = '{{ username }}'; // Get username from Flask route
         const sessionid = '{{ sessionid }}'; // Get sessionid from Flask route
         const permission = '{{ permission }}'

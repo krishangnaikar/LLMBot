@@ -1,6 +1,9 @@
 from flask import Blueprint, render_template, request, url_for, session, redirect
-import SlackBot.privateGPT as private
-import login_classes
+import privateGPT as private
+try:
+    import login_classes
+except ModuleNotFoundError:
+    import website.login_classes
 import time
 
 views = Blueprint(__name__, "views")

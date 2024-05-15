@@ -34,7 +34,7 @@ Ingestion complete! You can now run privateGPT.py to query your documents
 
 #### Step 5: Run this command (use python3 if on mac) to start the local host flask server
 ```
-python main.py
+python website/app.py
 ```
 
 #### Step 6: Register an acount and go to http://127.0.0.1:8000/ to start chatting

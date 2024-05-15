@@ -1,5 +1,8 @@
 from flask import Flask
-from views import views
+try:
+    from views import views
+except ModuleNotFoundError:
+    from website.views import views
 
 
 app = Flask(__name__)
