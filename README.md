@@ -16,9 +16,14 @@ pip install -r requirements.txt
 ollama pull mistral
 ```
 
+#### Step 4: Go into website directory
+```commandline
+cd website
+```
+
 #### Step 4: Ingest the files (use python3 if on mac)
 ```
-python website/ingest.py
+python ingest.py
 ```
 
 Output should look like this:
@@ -33,8 +38,9 @@ Ingestion complete! You can now run privateGPT.py to query your documents
 ```
 
 #### Step 5: Run this command (use python3 if on mac) to start the local host flask server
+##### (make sure you are in the website directory)
 ```
-python website/app.py
+python app.py
 ```
 
 #### Step 6: Register an acount and go to http://127.0.0.1:8000/ to start chatting
