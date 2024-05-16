@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session, redirect
+from flask import Blueprint, render_template, request, session, redirect, jsonify
 import privateGPT as private
 
 try:
@@ -49,6 +49,11 @@ def register():
     else:
         return render_template('register.html')
 
+@views.route('/logout', methods=['POST'])
+def logout():
+    session.clear()
+    return jsonify(success=True), 200
+
 @views.route('/chat', methods=['GET', 'POST'])
 def chat():
 
@@ -81,4 +86,4 @@ def query():
         query = request.form['query']
         permission = request.form['permission']
         result = private.main(query, permission)
-        return render_template('result.html', query=result[0], answer=result[1])
+        return {'query':result[0], 'answer':result[1]}#render_template('result.html', query=result[0], answer=result[1])
