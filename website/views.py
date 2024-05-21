@@ -66,12 +66,15 @@ def chat():
 
     username = session.get('username')
 
+
     if username in session_start_times:
         session_start_time = session_start_times[username]
         if time.time() - session_start_time > SESSION_TIMEOUT:
             del session['username']
             del session_start_times[username]
             return 'Session expired. Please log in again.'
+    else:
+        session_start_times[username] = time.time()
 
     return render_template('index.html', username=session.get('username'), sessionid=session.get('session_id'), permission=session.get('permission'))
 

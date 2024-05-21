@@ -4,7 +4,8 @@ import glob
 from typing import List
 from multiprocessing import Pool
 from tqdm import tqdm
-
+import warnings
+warnings.filterwarnings("ignore")
 from langchain.document_loaders import (
     CSVLoader,
     EverNoteLoader,
@@ -180,5 +181,6 @@ def get_folders_in_folder(folder_path):
     return folders
 
 if __name__ == "__main__":
-    for folder in get_folders_in_folder('source_documents'):
-        main(folder)
+    # for folder in get_folders_in_folder('source_documents'):
+    #     main(folder)
+    main()
