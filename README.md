@@ -26,7 +26,9 @@ cd website
 md source_documents
 ```
 
-#### Step 6: Add all your files into the source_documents directory that you just made
+#### Step 6: In the source_documents folder, create sub-folders for different permission levels, e.g base_user, admin
+
+#### Step 6.1: Add all your files into the respective sub-folders in source_documents directory that you just made
 
 
 #### Step 7: Ingest the files (use python3 if on Mac)
