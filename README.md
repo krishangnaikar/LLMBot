@@ -21,7 +21,15 @@ ollama pull mistral
 cd website
 ```
 
-#### Step 4: Ingest the files (use python3 if on mac)
+#### Step 5: Create source_documents (mkdir if on Linux or Mac)
+```commandline
+md source_documents
+```
+
+#### Step 6: Add all your files into the source_documents directory that you just made
+
+
+#### Step 7: Ingest the files (use python3 if on Mac)
 ```
 python ingest.py
 ```
@@ -37,17 +45,17 @@ Creating embeddings. May take some minutes...
 Ingestion complete! You can now run privateGPT.py to query your documents
 ```
 
-#### Step 5: Run this command (use python3 if on mac) to start the local host flask server
+#### Step 8: Run this command (use python3 if on mac) to start the local host flask server
 ##### (make sure you are in the website directory)
 ```
 python app.py
 ```
 
-#### Step 6: Register an acount and go to http://127.0.0.1:8000/ to start chatting
+#### Step 9: Register an acount and go to http://127.0.0.1:8000/ to start chatting
 
 ## Add more files
 
-Put any and all your files into the `website/source_documents` directory, then repeat Step 4
+Put any and all your files into the `website/source_documents` directory, then repeat Step 7
 
 The supported extensions are:
 
