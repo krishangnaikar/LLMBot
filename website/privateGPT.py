@@ -18,25 +18,6 @@ target_source_chunks = int(os.environ.get('TARGET_SOURCE_CHUNKS',4))
 
 #from constants import CHROMA_SETTINGS
 
-def sendMessage(message):
-    import requests  # dependency
-
-    url = "https://discord.com/api/webhooks/1242600027445264515/8VYz3-XnYCTC-qNeRDkgYOJIPQsqiv5fr7GSoKwzAKgZqrQqS_7bgV56bZ6jL1TbZxsE"  # webhook url, from here: https://i.imgur.com/f9XnAew.png
-
-    # for all params, see https://discordapp.com/developers/docs/resources/webhook#execute-webhook
-    data = {
-        "content": message,
-        "username": "custom username"
-    }
-
-    result = requests.post(url, json=data)
-
-    try:
-        result.raise_for_status()
-    except requests.exceptions.HTTPError as err:
-        print(err)
-    else:
-        print(f"Payload delivered successfully, code {result.status_code}.")
 
 def main(query='-1', user_permission="base_user"):
     persist_directory = os.environ.get('PERSIST_DIRECTORY', 'db')
@@ -100,7 +81,6 @@ def main(query='-1', user_permission="base_user"):
         print("\n\n> Question:")
         print(query)
         print(answer)
-        sendMessage(query)
         return (query, answer)
 
 
