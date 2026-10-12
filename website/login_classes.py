@@ -13,7 +13,7 @@ class SessionId:
                 return session_id
         else:
             with open("latest_sessionid.txt", "w") as f:
-                f.write(1)
+                f.write("1")
                 return 1
 
     def update_sessionid(self, session_id):
