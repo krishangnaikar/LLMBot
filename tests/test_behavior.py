@@ -33,3 +33,13 @@ def test_session_updates_persist(users_module, tmp_path):
     session.update_sessionid(11)
     assert file.read_text() == '11'
     assert users_module.SessionId().session_id == 11
+
+def test_first_session_initialization_persists_and_reloads(users_module, tmp_path):
+    file = tmp_path / 'latest_sessionid.txt'
+    assert not file.exists()
+    session = users_module.SessionId()
+    assert session.session_id == 1
+    assert file.read_text() == '1'
+    assert users_module.SessionId().session_id == 1
+    session.update_sessionid(2)
+    assert users_module.SessionId().session_id == 2
